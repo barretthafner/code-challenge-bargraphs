@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 
-import SingleBar from './components/single-bar';
+import styles from './App.module.scss';
 
-class App extends Component {
-	render() {
-		return (
-			<>
-				<SingleBar title="Tasks Completed" />
-			</>
-		);
-	}
-}
+import SingleBar from './components/SingleBar';
 
-export default App;
+export default () => (
+	<div className={styles.app}>
+		<SingleBar
+			left={{ color: '#007cff', value: 48 }}
+			right={{ color: '#ffe944', value: 272 }}
+			title="Tasks Completed"
+		/>
+	</div>
+);
