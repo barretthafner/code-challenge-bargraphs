@@ -1,3 +1,46 @@
 .singleBar {
-	background: coral;
+	display: flex;
+	flex-direction: column;
+
+	margin-top: 20px;
+}
+
+.header {
+	font-size: 1.5em;
+	font-weight: 700;
+}
+
+.infoContainer {
+	display: inherit;
+	justify-content: space-between;
+
+	margin-top: 20px;
+}
+
+.barContainer {
+	display: inherit;
+	flex-direction: row;
+	// align-content: stretch;
+
+	height: 40px;
+	margin-top: 5px;
+}
+
+.leftBar {
+	position: relative;
+}
+
+.rightBar {
+	position: relative;
+	flex-grow: 1;
+}
+
+.barValue {
+	padding: 5px;
+
+	position: absolute;
+	left: 0;
+	bottom: 0;
+
+	font-weight: 700;
 }

@@ -6,7 +6,7 @@
  * BarValuePropType
  * { color: '#007cff', value: 48 }
  */
-export type BarValuePropType = {
+export interface BarValuePropType {
 	color: string;
 	value: number;
-};
+}

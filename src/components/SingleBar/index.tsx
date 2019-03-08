@@ -10,7 +10,39 @@ interface Props {
 }
 
 const SingleBar: React.FunctionComponent<Props> = ({ left, right, title }) => {
-	return <div className={styles.singleBar}>{title}</div>;
+	const { color: leftColor, value: leftValue } = left;
+	const { color: rightColor, value: rightValue } = right;
+
+	const totalValue = leftValue + rightValue;
+	const leftPercentage = Math.round((leftValue / totalValue) * 100);
+	const rightPercentage = Math.round((rightValue / totalValue) * 100);
+
+	return (
+		<section className={styles.singleBar}>
+			<header className={styles.header}>SingleBar Component</header>
+			<div className={styles.infoContainer}>
+				<div>{title}</div>
+				<div>Total: {totalValue}</div>
+			</div>
+			<div className={styles.barContainer}>
+				<div
+					className={styles.leftBar}
+					style={{
+						width: leftPercentage + '%',
+						backgroundColor: leftColor,
+					}}>
+					<span className={styles.barValue}>{leftPercentage}%</span>
+				</div>
+				<div
+					className={styles.rightBar}
+					style={{
+						backgroundColor: rightColor,
+					}}>
+					<span className={styles.barValue}>{rightPercentage}%</span>
+				</div>
+			</div>
+		</section>
+	);
 };
 
 export default SingleBar;
