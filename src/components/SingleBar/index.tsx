@@ -1,15 +1,32 @@
-import React from 'react';
+import * as React from 'react';
+
 import styles from './SingleBar.module.scss';
 
-import { BarValuePropType } from '../types';
+/**
+ * BarValuePropType
+ */
+interface BarValuePropType {
+	color: string;
+	value: number;
+}
 
-export interface Props {
+/**
+ * SingleBarProps
+ */
+export interface SingleBarProps {
 	left: BarValuePropType;
 	right: BarValuePropType;
 	title: string;
 }
 
-const SingleBar: React.FunctionComponent<Props> = ({ left, right, title }) => {
+/**
+ * SingleBar Component
+ */
+const SingleBar: React.FunctionComponent<SingleBarProps> = ({
+	left,
+	right,
+	title,
+}) => {
 	const { color: leftColor, value: leftValue } = left;
 	const { color: rightColor, value: rightValue } = right;
 
@@ -18,8 +35,7 @@ const SingleBar: React.FunctionComponent<Props> = ({ left, right, title }) => {
 	const rightPercentage = Math.round((rightValue / totalValue) * 100);
 
 	return (
-		<section className={styles.singleBar}>
-			<header className={styles.header}>SingleBar Component</header>
+		<figure className={styles.singleBar}>
 			<div className={styles.infoContainer}>
 				<div>{title}</div>
 				<div>
@@ -47,7 +63,7 @@ const SingleBar: React.FunctionComponent<Props> = ({ left, right, title }) => {
 					</span>
 				</div>
 			</div>
-		</section>
+		</figure>
 	);
 };
 

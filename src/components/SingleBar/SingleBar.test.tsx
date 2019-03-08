@@ -1,14 +1,14 @@
-import React from 'react';
-import SingleBar, { Props } from './index';
+import * as React from 'react';
 import 'jest-dom/extend-expect';
-import styles from '.SingleBar.module.scss';
-
 import { render, cleanup } from 'react-testing-library';
+
+import SingleBar, { SingleBarProps } from './index';
+import styles from '.SingleBar.module.scss';
 
 /**
  * Render Component
  */
-const testProps: Props = {
+const testProps: SingleBarProps = {
 	title: 'Task Complete',
 	left: { color: '#007cff', value: 48 },
 	right: { color: '#ffe944', value: 240 },
