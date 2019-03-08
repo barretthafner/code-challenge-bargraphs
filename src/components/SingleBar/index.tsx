@@ -8,6 +8,7 @@ import styles from './SingleBar.module.scss';
 interface BarValuePropType {
 	color: string;
 	value: number;
+	description?: string;
 }
 
 /**

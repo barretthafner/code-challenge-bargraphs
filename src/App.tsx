@@ -4,6 +4,7 @@ import styles from './App.module.scss';
 
 import SingleBar from './components/SingleBar';
 import MultiBar from './components/MultiBar';
+import AsyncMultiBar from './components/AsyncMultiBar';
 
 const values = [
 	{
@@ -23,6 +24,9 @@ const values = [
 	},
 ];
 
+const apiEndpoint =
+	'https://gist.githubusercontent.com/gargrave/e2fd3d07d44862a094dabb36137a9187/raw/29f8aef5813e1f67ab12f90617638091561b6b25/mock-api.json';
+
 export default () => (
 	<main className={styles.app}>
 		<section>
@@ -33,9 +37,15 @@ export default () => (
 				title="Tasks Completed"
 			/>
 		</section>
+
 		<section>
 			<h2 className={styles.header}>MulitBar Component</h2>
 			<MultiBar values={values} />
+		</section>
+
+		<section>
+			<h2 className={styles.header}>AsyncMultiBar Component</h2>
+			<AsyncMultiBar endpoint={apiEndpoint} />
 		</section>
 	</main>
 );
