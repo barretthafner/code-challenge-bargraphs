@@ -7,7 +7,7 @@ import { initialState, getActions, StateContext } from './context';
 import SingleBar from './components/SingleBar';
 import MultiBar from './components/MultiBar';
 import AsyncMultiBar from './components/AsyncMultiBar';
-import ActiveBarDataContainer from './components/ActiveBarData';
+import ActiveDataContainer from './components/ActiveData';
 
 /**
  * Test values
@@ -72,8 +72,8 @@ const App = () => {
 					<AsyncMultiBar endpoint={apiEndpoint} />
 				</section>
 				<section>
-					<h2 className={styles.header}>ActiveBarData</h2>
-					<ActiveBarDataContainer />
+					<h2 className={styles.header}>Active Data</h2>
+					<ActiveDataContainer />
 				</section>
 			</main>
 		</StateContext.Provider>

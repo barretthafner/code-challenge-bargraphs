@@ -2,9 +2,9 @@ import * as React from 'react';
 import { StateContext } from '../../context';
 
 /**
- * ActiveBarDataProps
+ * ActiveDataProps
  */
-export interface ActiveBarDataProps {
+export interface ActiveDataProps {
 	title: string;
 	value: number;
 	percentage: number;
@@ -13,9 +13,9 @@ export interface ActiveBarDataProps {
 }
 
 /**
- * ActiveBarData Component
+ * ActiveData Component
  */
-const ActiveBarData: React.FunctionComponent<ActiveBarDataProps> = ({
+const ActiveData: React.FunctionComponent<ActiveDataProps> = ({
 	title,
 	value,
 	percentage,
@@ -23,7 +23,7 @@ const ActiveBarData: React.FunctionComponent<ActiveBarDataProps> = ({
 	description,
 }) => {
 	return (
-		<section>
+		<div>
 			<div>
 				<div>{title}</div>
 				<ul>
@@ -34,18 +34,18 @@ const ActiveBarData: React.FunctionComponent<ActiveBarDataProps> = ({
 					</li>
 				</ul>
 			</div>
-		</section>
+		</div>
 	);
 };
 
-const ActiveBarDataContainer: React.FunctionComponent = () => {
+const ActiveDataContainer: React.FunctionComponent = () => {
 	const { activeData } = React.useContext(StateContext);
 
-	return activeData ? (
-		<ActiveBarData {...activeData} />
-	) : (
-		<div>No active data</div>
+	return (
+		<div>
+			{activeData ? <ActiveData {...activeData} /> : <div>No active data</div>}
+		</div>
 	);
 };
 
-export default ActiveBarDataContainer;
+export default ActiveDataContainer;

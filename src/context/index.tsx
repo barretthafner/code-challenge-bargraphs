@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { ActiveBarDataProps } from '../components/ActiveBarData';
+import { ActiveDataProps } from '../components/ActiveData';
 
 /**
  * Typescript definitions
  */
 interface State {
-	activeData: ActiveBarDataProps | null;
+	activeData: ActiveDataProps | null;
 }
 
 interface Actions {
 	updateActiveData: Function;
 }
 
-interface IStateContext extends State, Actions {}
+interface Context extends State, Actions {}
 
 /**
  * Set initial state
@@ -26,7 +26,7 @@ export const initialState: State = {
  */
 export const getActions = (setState: Function): Actions => {
 	return {
-		updateActiveData: (activeData: ActiveBarDataProps | null) => {
+		updateActiveData: (activeData: ActiveDataProps | null) => {
 			setState({ activeData });
 		},
 	};
@@ -38,4 +38,4 @@ export const getActions = (setState: Function): Actions => {
 export const StateContext = React.createContext({
 	...initialState,
 	updateActiveData: () => {},
-} as IStateContext);
+} as Context);
