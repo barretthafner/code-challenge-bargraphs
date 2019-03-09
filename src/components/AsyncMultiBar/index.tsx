@@ -9,14 +9,14 @@ const BarColorGreen = '#16B217';
 const BarColorRed = '#C71113';
 
 /**
- * PropType definition
+ * AsyncMultiBarProps
  */
-export interface AsyncMultiBarProps {
+interface AsyncMultiBarProps {
 	endpoint: string;
 }
 
 /**
- * AsyncMultiBar Compoennt
+ * AsyncMultiBar Component
  */
 const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
 	endpoint,
@@ -25,7 +25,7 @@ const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
 
 	/**
 	 * fetchValues
-	 * Fetch value from the api and set them
+	 * Fetch data from the api, transform it, and set it to state
 	 */
 	const fetchValues = async () => {
 		const response = await fetch(endpoint);
@@ -34,11 +34,11 @@ const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
 	};
 
 	/**
-	 * React effects
+	 * Run Fetch data on mount only
 	 */
 	React.useEffect(() => {
-		setTimeout(fetchValues, 1000);
-		// fetchValues();
+		// setTimeout(fetchValues, 1000);
+		fetchValues();
 	}, []);
 
 	/**

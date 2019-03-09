@@ -15,14 +15,13 @@
 .barContainer {
 	display: inherit;
 	flex-direction: row;
-	// align-content: stretch;
 
 	height: 40px;
 	margin-top: 5px;
 }
 
-.leftBar,
-.rightBar {
+.leftSide,
+.rightSide {
 	position: relative;
 
 	&::after {
@@ -47,7 +46,7 @@
 	}
 }
 
-.rightBar {
+.rightSide {
 	position: relative;
 	flex-grow: 1;
 }

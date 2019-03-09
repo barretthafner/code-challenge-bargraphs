@@ -5,9 +5,9 @@ import ToolTip from '../ToolTip';
 import styles from './SingleBar.module.scss';
 
 /**
- * BarValuePropType
+ * BarSidePropType
  */
-interface BarValuePropType {
+interface BarSidePropType {
 	color: string;
 	value: number;
 	description?: string;
@@ -17,8 +17,8 @@ interface BarValuePropType {
  * SingleBarProps
  */
 export interface SingleBarProps {
-	left: BarValuePropType;
-	right: BarValuePropType;
+	left: BarSidePropType;
+	right: BarSidePropType;
 	title: string;
 }
 
@@ -30,6 +30,7 @@ const SingleBar: React.FunctionComponent<SingleBarProps> = ({
 	right,
 	title,
 }) => {
+	// calculate total
 	const total = left.value + right.value;
 
 	return (
@@ -41,23 +42,26 @@ const SingleBar: React.FunctionComponent<SingleBarProps> = ({
 				</div>
 			</div>
 			<div className={styles.barContainer}>
-				<Bar title={title} total={total} isLeft={true} {...left} />
-				<Bar title={title} total={total} isLeft={false} {...right} />
+				<Side title={title} total={total} isLeft={true} {...left} />
+				<Side title={title} total={total} isLeft={false} {...right} />
 			</div>
 		</figure>
 	);
 };
 
 /**
- * Bar Helper Component
+ * SidePros
  */
-interface BarProps extends BarValuePropType {
+interface SideProps extends BarSidePropType {
 	title: string;
 	total: number;
 	isLeft: boolean;
 }
 
-const Bar: React.FunctionComponent<BarProps> = ({
+/**
+ * Side Helper Component
+ */
+const Side: React.FunctionComponent<SideProps> = ({
 	title,
 	total,
 	isLeft,
@@ -68,11 +72,13 @@ const Bar: React.FunctionComponent<BarProps> = ({
 	// calculate percentage
 	const percentage = Math.round((value / total) * 100);
 
-	let _listener = null;
-
+	// handle tooltip positioning
 	const [toolTipVisibility, setToolTipVisibility] = React.useState(false);
 	const [toolTipPosition, setToolTipPosition] = React.useState({ x: 0, y: 0 });
 
+	/**
+	 * Mouse movement event handlers
+	 */
 	const onMouseEnter = () => {
 		setToolTipVisibility(true);
 	};
@@ -87,16 +93,19 @@ const Bar: React.FunctionComponent<BarProps> = ({
 
 	// TODO: Highlight and show tooltip on touch screens
 
+	/**
+	 * Render content
+	 */
 	return (
 		<div
-			className={isLeft ? styles.leftBar : styles.rightBar}
-			onMouseEnter={onMouseEnter}
-			onMouseLeave={onMouseLeave}
-			onMouseMove={onMouseMove}
+			className={isLeft ? styles.leftSide : styles.rightSide}
 			style={{
 				backgroundColor: color,
 				width: isLeft ? percentage + '%' : '',
-			}}>
+			}}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+			onMouseMove={onMouseMove}>
 			<span className={styles.barValue}>
 				<span data-testid={isLeft ? 'leftPercentage' : 'rightPercentage'}>
 					{percentage}

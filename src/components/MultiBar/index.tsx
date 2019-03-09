@@ -3,14 +3,14 @@ import * as React from 'react';
 import SingleBar, { SingleBarProps } from '../SingleBar';
 
 /**
- * PropType definition
+ * MultiBarProps
  */
-export interface MultiBarProps {
+interface MultiBarProps {
 	values: SingleBarProps[];
 }
 
 /**
- * MulitBar Compoennt
+ * MultiBar Component
  */
 const MultiBar: React.FunctionComponent<MultiBarProps> = ({ values }) => (
 	<div>

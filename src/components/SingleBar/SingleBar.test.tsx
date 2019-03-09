@@ -24,11 +24,11 @@ const { container, getByText, getByTestId } = render(
 test('renders as expected', () => {
 	expect(getByText(testProps.title)).toBeInTheDocument();
 
-	expect(container.querySelector(`.${styles.leftBar}`)).toHaveStyle(
+	expect(container.querySelector(`.${styles.leftSide}`)).toHaveStyle(
 		`background-color: ${testProps.left.color};`
 	);
 
-	expect(container.querySelector(`.${styles.rightBar}`)).toHaveStyle(
+	expect(container.querySelector(`.${styles.rightSide}`)).toHaveStyle(
 		`background-color: ${testProps.right.color};`
 	);
 });
