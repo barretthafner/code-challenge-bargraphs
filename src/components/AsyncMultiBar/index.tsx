@@ -3,6 +3,11 @@ import * as React from 'react';
 import SingleBar, { SingleBarProps } from '../SingleBar';
 import MultiBar from '../MultiBar';
 
+import styles from './AsyncMultiBar.module.scss';
+
+const BarColorGreen = '#16B217';
+const BarColorRed = '#C71113';
+
 /**
  * PropType definition
  */
@@ -11,7 +16,7 @@ export interface AsyncMultiBarProps {
 }
 
 /**
- * AsyncMulitBar Compoennt
+ * AsyncMultiBar Compoennt
  */
 const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
 	endpoint,
@@ -41,7 +46,11 @@ const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
 	 */
 	return (
 		<div>
-			{values.length > 0 ? <MultiBar values={values} /> : <div>Loading...</div>}
+			{values.length > 0 ? (
+				<MultiBar values={values} />
+			) : (
+				<div className={styles.loading}>Loading...</div>
+			)}
 		</div>
 	);
 };
@@ -76,12 +85,12 @@ function mapData(data: any[]): SingleBarProps[] {
 				if (index === 0)
 					acc.left = {
 						...valueData,
-						color: '#16B217',
+						color: BarColorGreen,
 					};
 				else
 					acc.right = {
 						...valueData,
-						color: '#C71113',
+						color: BarColorRed,
 					};
 
 				return acc;
