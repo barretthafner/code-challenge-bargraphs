@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StateContext } from '../../context';
+import { StateContext } from '../../state';
 
 /**
  * ActiveDataProps

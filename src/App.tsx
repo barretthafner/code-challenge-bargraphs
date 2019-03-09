@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import styles from './App.module.scss';
 
-import { initialState, getActions, StateContext } from './context';
+import { initialState, getActions, StateContext } from './state';
 
 import SingleBar from './components/SingleBar';
 import MultiBar from './components/MultiBar';

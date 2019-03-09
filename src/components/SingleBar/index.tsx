@@ -3,7 +3,7 @@ import * as React from 'react';
 import ToolTip from '../ToolTip';
 
 import styles from './SingleBar.module.scss';
-import { StateContext } from '../../context';
+import { StateContext } from '../../state';
 
 /**
  * BarSidePropType
