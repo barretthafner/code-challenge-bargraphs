@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import ToolTip from '../ToolTip';
+
 import styles from './SingleBar.module.scss';
 
 /**
@@ -28,43 +30,93 @@ const SingleBar: React.FunctionComponent<SingleBarProps> = ({
 	right,
 	title,
 }) => {
-	const { color: leftColor, value: leftValue } = left;
-	const { color: rightColor, value: rightValue } = right;
-
-	const totalValue = leftValue + rightValue;
-	const leftPercentage = Math.round((leftValue / totalValue) * 100);
-	const rightPercentage = Math.round((rightValue / totalValue) * 100);
+	const total = left.value + right.value;
 
 	return (
 		<figure className={styles.singleBar}>
 			<div className={styles.infoContainer}>
 				<div>{title}</div>
 				<div>
-					Total: <span data-testid="totalValue">{totalValue}</span>
+					Total: <span data-testid="totalValue">{total}</span>
 				</div>
 			</div>
 			<div className={styles.barContainer}>
-				<div
-					className={styles.leftBar}
-					style={{
-						width: leftPercentage + '%',
-						backgroundColor: leftColor,
-					}}>
-					<span className={styles.barValue}>
-						<span data-testid="leftPercentage">{leftPercentage}</span>%
-					</span>
-				</div>
-				<div
-					className={styles.rightBar}
-					style={{
-						backgroundColor: rightColor,
-					}}>
-					<span className={styles.barValue}>
-						<span data-testid="rightPercentage">{rightPercentage}</span>%
-					</span>
-				</div>
+				<Bar title={title} total={total} isLeft={true} {...left} />
+				<Bar title={title} total={total} isLeft={false} {...right} />
 			</div>
 		</figure>
+	);
+};
+
+/**
+ * Bar Helper Component
+ */
+interface BarProps extends BarValuePropType {
+	title: string;
+	total: number;
+	isLeft: boolean;
+}
+
+const Bar: React.FunctionComponent<BarProps> = ({
+	title,
+	total,
+	isLeft,
+	color,
+	value,
+	description,
+}) => {
+	// calculate percentage
+	const percentage = Math.round((value / total) * 100);
+
+	let _listener = null;
+
+	const [toolTipVisibility, setToolTipVisibility] = React.useState(false);
+	const [toolTipPosition, setToolTipPosition] = React.useState({ x: 0, y: 0 });
+
+	const onMouseEnter = () => {
+		setToolTipVisibility(true);
+	};
+
+	const onMouseLeave = () => {
+		setToolTipVisibility(false);
+	};
+
+	const onMouseMove = (e: React.MouseEvent) => {
+		setToolTipPosition({ x: e.clientX, y: e.clientY });
+	};
+
+	// const onClick = (e: React.MouseEvent) => {
+	// 	console.log(e);
+	// };
+
+	return (
+		<div
+			className={isLeft ? styles.leftBar : styles.rightBar}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+			onMouseMove={onMouseMove}
+			// onClick={onClick}
+			style={{
+				backgroundColor: color,
+				width: isLeft ? percentage + '%' : '',
+			}}>
+			<span className={styles.barValue}>
+				<span data-testid={isLeft ? 'leftPercentage' : 'rightPercentage'}>
+					{percentage}
+				</span>
+				%
+			</span>
+			{toolTipVisibility ? (
+				<ToolTip
+					title={title}
+					value={value}
+					percentage={percentage}
+					total={total}
+					description={description}
+					{...toolTipPosition}
+				/>
+			) : null}
+		</div>
 	);
 };
 

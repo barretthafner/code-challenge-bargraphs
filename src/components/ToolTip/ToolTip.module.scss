@@ -1,0 +1,33 @@
+$background: #c4e1ff;
+$arrow-size: 10px;
+
+.toolTip {
+	position: fixed;
+	transform: translate3d(-50%, 0, 0);
+
+	z-index: 2;
+
+	pointer-events: none;
+
+	&:before {
+		display: block;
+		width: 0;
+		height: 0;
+		border-left: $arrow-size solid transparent;
+		border-right: $arrow-size solid transparent;
+		margin: auto;
+
+		border-bottom: $arrow-size solid $background;
+
+		content: '';
+	}
+}
+
+.contents {
+	padding: 10px;
+
+	font-weight: 400;
+
+	background-color: $background;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+}
