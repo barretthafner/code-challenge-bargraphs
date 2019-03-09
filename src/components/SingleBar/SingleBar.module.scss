@@ -21,8 +21,28 @@
 	margin-top: 5px;
 }
 
-.leftBar {
+.leftBar,
+.rightBar {
 	position: relative;
+
+	&::after {
+		display: block;
+		border: 0px solid black;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		content: '';
+	}
+
+	&:hover {
+		&::after {
+			border-width: 2px;
+		}
+	}
 }
 
 .rightBar {
