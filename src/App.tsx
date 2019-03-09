@@ -29,6 +29,11 @@ const apiEndpoint =
 
 export default () => (
 	<main className={styles.app}>
+		<h1 className={styles.title}>Code Challenge Bargraphs</h1>
+		<a className={styles.author} href="mailto:barretth@gmail.com">
+			By Barrett Hafner
+		</a>
+
 		<section>
 			<h2 className={styles.header}>SingleBar Component</h2>
 			<SingleBar
