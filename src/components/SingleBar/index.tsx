@@ -3,6 +3,7 @@ import * as React from 'react';
 import ToolTip from '../ToolTip';
 
 import styles from './SingleBar.module.scss';
+import { StateContext } from '../../context';
 
 /**
  * BarSidePropType
@@ -76,15 +77,19 @@ const Side: React.FunctionComponent<SideProps> = ({
 	const [toolTipVisibility, setToolTipVisibility] = React.useState(false);
 	const [toolTipPosition, setToolTipPosition] = React.useState({ x: 0, y: 0 });
 
+	const { updateActiveData } = React.useContext(StateContext);
+
 	/**
 	 * Mouse movement event handlers
 	 */
 	const onMouseEnter = () => {
 		setToolTipVisibility(true);
+		updateActiveData({ title, total, value, description, percentage });
 	};
 
 	const onMouseLeave = () => {
 		setToolTipVisibility(false);
+		updateActiveData(null);
 	};
 
 	const onMouseMove = (e: React.MouseEvent) => {

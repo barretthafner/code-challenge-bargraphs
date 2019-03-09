@@ -1,11 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 
 import styles from './App.module.scss';
+
+import { initialState, getActions, StateContext } from './context';
 
 import SingleBar from './components/SingleBar';
 import MultiBar from './components/MultiBar';
 import AsyncMultiBar from './components/AsyncMultiBar';
+import ActiveBarDataContainer from './components/ActiveBarData';
 
+/**
+ * Test values
+ */
 const values = [
 	{
 		title: 'Data1',
@@ -27,30 +33,51 @@ const values = [
 const apiEndpoint =
 	'https://gist.githubusercontent.com/gargrave/e2fd3d07d44862a094dabb36137a9187/raw/29f8aef5813e1f67ab12f90617638091561b6b25/mock-api.json';
 
-export default () => (
-	<main className={styles.app}>
-		<h1 className={styles.title}>Code Challenge Bargraphs</h1>
-		<a className={styles.author} href="mailto:barretth@gmail.com">
-			By Barrett Hafner
-		</a>
+/**
+ * App Component
+ */
+const App = () => {
+	/**
+	 * Setup state
+	 */
+	const [state, setState] = React.useState(initialState);
 
-		<section>
-			<h2 className={styles.header}>SingleBar Component</h2>
-			<SingleBar
-				left={{ color: '#007cff', value: 48 }}
-				right={{ color: '#ffe944', value: 272 }}
-				title="Tasks Completed"
-			/>
-		</section>
+	/**
+	 * Render component
+	 */
+	return (
+		<StateContext.Provider value={{ ...state, ...getActions(setState) }}>
+			<main className={styles.app}>
+				<h1 className={styles.title}>Code Challenge Bargraphs</h1>
+				<a className={styles.author} href="mailto:barretth@gmail.com">
+					By Barrett Hafner
+				</a>
 
-		<section>
-			<h2 className={styles.header}>MulitBar Component</h2>
-			<MultiBar values={values} />
-		</section>
+				<section>
+					<h2 className={styles.header}>SingleBar Component</h2>
+					<SingleBar
+						left={{ color: '#007cff', value: 48 }}
+						right={{ color: '#ffe944', value: 272 }}
+						title="Tasks Completed"
+					/>
+				</section>
 
-		<section>
-			<h2 className={styles.header}>AsyncMultiBar Component</h2>
-			<AsyncMultiBar endpoint={apiEndpoint} />
-		</section>
-	</main>
-);
+				<section>
+					<h2 className={styles.header}>MulitBar Component</h2>
+					<MultiBar values={values} />
+				</section>
+
+				<section>
+					<h2 className={styles.header}>AsyncMultiBar Component</h2>
+					<AsyncMultiBar endpoint={apiEndpoint} />
+				</section>
+				<section>
+					<h2 className={styles.header}>ActiveBarData</h2>
+					<ActiveBarDataContainer />
+				</section>
+			</main>
+		</StateContext.Provider>
+	);
+};
+
+export default App;
