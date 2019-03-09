@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { StateContext } from '../../state';
 
+import styles from './ActiveData.module.scss';
+
 /**
  * ActiveDataProps
  */
@@ -23,17 +25,15 @@ const ActiveData: React.FunctionComponent<ActiveDataProps> = ({
 	description,
 }) => {
 	return (
-		<div>
-			<div>
-				<div>{title}</div>
-				<ul>
-					{description ? <li>Description: {description}</li> : null}
-					<li>Value: {value}</li>
-					<li>
-						{percentage}% of {total}
-					</li>
-				</ul>
-			</div>
+		<div className={styles.contents}>
+			<div className={styles.title}>{title}</div>
+			<ul className={styles.facts}>
+				{description ? <li>Description: {description}</li> : null}
+				<li>Value: {value}</li>
+				<li>
+					{percentage}% of {total}
+				</li>
+			</ul>
 		</div>
 	);
 };
@@ -42,8 +42,8 @@ const ActiveDataContainer: React.FunctionComponent = () => {
 	const { activeData } = React.useContext(StateContext);
 
 	return (
-		<div>
-			{activeData ? <ActiveData {...activeData} /> : <div>No active data</div>}
+		<div className={styles.container}>
+			{activeData ? <ActiveData {...activeData} /> : null}
 		</div>
 	);
 };
