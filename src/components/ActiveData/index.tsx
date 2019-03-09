@@ -38,6 +38,9 @@ const ActiveData: React.FunctionComponent<ActiveDataProps> = ({
 	);
 };
 
+/**
+ * Contaner component to check for appropriate state
+ */
 const ActiveDataContainer: React.FunctionComponent = () => {
 	const { activeData } = React.useContext(StateContext);
 
