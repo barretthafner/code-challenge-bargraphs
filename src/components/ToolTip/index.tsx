@@ -30,16 +30,18 @@ const ToolTip: React.FunctionComponent<ToolTipProps> = ({
 		<aside
 			className={styles.toolTip}
 			style={{
-				top: y,
 				left: x,
+				top: y,
 			}}>
 			<div className={styles.contents}>
-				<div>{title}</div>
-				<div>Value: {value}</div>
-				<div>
-					{percentage}% of {total}
-				</div>
-				{description ? <div>Description: {description}</div> : null}
+				<div className={styles.title}>{title}</div>
+				<ul className={styles.facts}>
+					{description ? <li>Description: {description}</li> : null}
+					<li>Value: {value}</li>
+					<li>
+						{percentage}% of {total}
+					</li>
+				</ul>
 			</div>
 		</aside>
 	);

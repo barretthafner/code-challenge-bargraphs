@@ -85,9 +85,7 @@ const Bar: React.FunctionComponent<BarProps> = ({
 		setToolTipPosition({ x: e.clientX, y: e.clientY });
 	};
 
-	// const onClick = (e: React.MouseEvent) => {
-	// 	console.log(e);
-	// };
+	// TODO: Highlight and show tooltip on touch screens
 
 	return (
 		<div
@@ -95,7 +93,6 @@ const Bar: React.FunctionComponent<BarProps> = ({
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			onMouseMove={onMouseMove}
-			// onClick={onClick}
 			style={{
 				backgroundColor: color,
 				width: isLeft ? percentage + '%' : '',
