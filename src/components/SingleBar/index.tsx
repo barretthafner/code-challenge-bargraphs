@@ -3,6 +3,11 @@ import * as React from 'react';
 import styles from './SingleBar.module.scss';
 import { StateContext } from '../../state';
 
+import {
+	TEST_ID_LEFT_PERCENTAGE,
+	TEST_ID_RIGHT_PERCENTAGE,
+} from './SingleBar.test';
+
 /**
  * BarSideValues
  */
@@ -109,7 +114,10 @@ const Side: React.FunctionComponent<SideProps> = ({
 			onMouseLeave={onMouseLeave}
 			onMouseMove={onMouseMove}>
 			<span className={styles.barValue}>
-				<span data-testid={isLeft ? 'leftPercentage' : 'rightPercentage'}>
+				<span
+					data-testid={
+						isLeft ? TEST_ID_LEFT_PERCENTAGE : TEST_ID_RIGHT_PERCENTAGE
+					}>
 					{percentage}
 				</span>
 				%

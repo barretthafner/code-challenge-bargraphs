@@ -1,9 +1,12 @@
 import * as React from 'react';
 import 'jest-dom/extend-expect';
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import SingleBar, { SingleBarProps } from './index';
-import styles from '.SingleBar.module.scss';
+import styles from './SingleBar.module.scss';
+
+export const TEST_ID_LEFT_PERCENTAGE = 'leftPercentage';
+export const TEST_ID_RIGHT_PERCENTAGE = 'rightPercentage';
 
 /**
  * Render Component
@@ -14,14 +17,16 @@ const testProps: SingleBarProps = {
 	right: { color: '#ffe944', value: 240 },
 };
 
-const { container, getByText, getByTestId } = render(
-	<SingleBar {...testProps} />
-);
+/**
+ * Cleanup
+ */
+afterEach(cleanup);
 
 /**
- * Test props are rendered as expected
+ * Tests
  */
 test('renders as expected', () => {
+	const { container, getByText } = render(<SingleBar {...testProps} />);
 	expect(getByText(testProps.title)).toBeInTheDocument();
 
 	expect(container.querySelector(`.${styles.leftSide}`)).toHaveStyle(
@@ -33,10 +38,9 @@ test('renders as expected', () => {
 	);
 });
 
-/**
- * Test that the math is executed as expected
- */
 test('math is done properly', () => {
+	const { getByTestId } = render(<SingleBar {...testProps} />);
+
 	const { value: leftValue } = testProps.left;
 	const { value: rightValue } = testProps.right;
 
@@ -46,15 +50,17 @@ test('math is done properly', () => {
 
 	expect(getByTestId('totalValue')).toHaveTextContent(totalValue.toString());
 
-	expect(getByTestId('leftPercentage')).toHaveTextContent(
+	expect(getByTestId(TEST_ID_LEFT_PERCENTAGE)).toHaveTextContent(
 		leftPercentage.toString()
 	);
-	expect(getByTestId('rightPercentage')).toHaveTextContent(
+	expect(getByTestId(TEST_ID_RIGHT_PERCENTAGE)).toHaveTextContent(
 		rightPercentage.toString()
 	);
 });
 
 /**
- * Cleanup
+ * TODO: Implement this test, when supported
+ * JSDOM does not support pseudo elements at this time (10 Mar 2019)
+ * https://github.com/jsdom/jsdom/issues/1928
  */
-afterAll(cleanup);
+// test('sides highlight on hover', () => {});
