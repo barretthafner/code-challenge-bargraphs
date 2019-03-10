@@ -2,6 +2,9 @@ import * as React from 'react';
 import styles from './ToolTip.module.scss';
 import { StateContext } from '../../state';
 
+/**
+ * Intermediate component to render ToolTip if activeData exists
+ */
 const ToolTipContainer: React.FunctionComponent = () => {
 	const { activeData, toolTipPosition } = React.useContext(StateContext);
 

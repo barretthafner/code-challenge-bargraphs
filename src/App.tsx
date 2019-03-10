@@ -33,6 +33,8 @@ const values = [
 const apiEndpoint =
 	'https://gist.githubusercontent.com/gargrave/e2fd3d07d44862a094dabb36137a9187/raw/29f8aef5813e1f67ab12f90617638091561b6b25/mock-api.json';
 
+const email = 'barretth@gmail.com';
+
 /**
  * App Component
  */
@@ -53,7 +55,7 @@ const App = () => {
 				<ToolTipContainer />
 
 				<h1 className={styles.title}>Code Challenge Bargraphs</h1>
-				<a className={styles.author} href="mailto:barretth@gmail.com">
+				<a className={styles.author} href={`mailto:${email}`}>
 					By Barrett Hafner
 				</a>
 

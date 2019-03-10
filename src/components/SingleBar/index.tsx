@@ -1,14 +1,12 @@
 import * as React from 'react';
 
-import ToolTip from '../ToolTip';
-
 import styles from './SingleBar.module.scss';
 import { StateContext } from '../../state';
 
 /**
- * BarSidePropType
+ * BarSideValues
  */
-interface BarSidePropType {
+interface BarSideValues {
 	color: string;
 	value: number;
 	description?: string;
@@ -18,8 +16,8 @@ interface BarSidePropType {
  * SingleBarProps
  */
 export interface SingleBarProps {
-	left: BarSidePropType;
-	right: BarSidePropType;
+	left: BarSideValues;
+	right: BarSideValues;
 	title: string;
 }
 
@@ -53,7 +51,7 @@ const SingleBar: React.FunctionComponent<SingleBarProps> = ({
 /**
  * SidePros
  */
-interface SideProps extends BarSidePropType {
+interface SideProps extends BarSideValues {
 	title: string;
 	total: number;
 	isLeft: boolean;
