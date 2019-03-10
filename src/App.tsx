@@ -7,7 +7,6 @@ import { initialState, getContext, StateContext } from './state';
 import SingleBar from './components/SingleBar';
 import MultiBar from './components/MultiBar';
 import AsyncMultiBar from './components/AsyncMultiBar';
-import ActiveDataContainer from './components/ActiveData';
 import ToolTipContainer from './components/ToolTip';
 
 /**
@@ -75,10 +74,6 @@ const App = () => {
 				<section>
 					<h2 className={styles.header}>AsyncMultiBar Component</h2>
 					<AsyncMultiBar endpoint={apiEndpoint} />
-				</section>
-				<section>
-					<h2 className={styles.header}>Active Data</h2>
-					<ActiveDataContainer />
 				</section>
 			</main>
 		</StateContext.Provider>

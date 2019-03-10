@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { ActiveDataProps } from '../components/ActiveData';
 
 /**
  * Typescript definitions
  */
+export interface ActiveDataProps {
+	title: string;
+	value: number;
+	percentage: number;
+	total: number;
+	description?: string;
+}
+
 interface Point {
 	x: number;
 	y: number;
