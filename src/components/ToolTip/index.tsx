@@ -1,5 +1,12 @@
 import * as React from 'react';
 import styles from './ToolTip.module.scss';
+import { StateContext } from '../../state';
+
+const ToolTipContainer: React.FunctionComponent = () => {
+	const { activeData, toolTipPosition } = React.useContext(StateContext);
+
+	return activeData ? <ToolTip {...activeData} {...toolTipPosition} /> : null;
+};
 
 /**
  * ToolTipProps
@@ -47,4 +54,4 @@ const ToolTip: React.FunctionComponent<ToolTipProps> = ({
 	);
 };
 
-export default ToolTip;
+export default ToolTipContainer;

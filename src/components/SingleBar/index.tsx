@@ -70,30 +70,29 @@ const Side: React.FunctionComponent<SideProps> = ({
 	value,
 	description,
 }) => {
+	/**
+	 * Get state setters
+	 */
+	const { updateActiveData, updateToolTipPosition } = React.useContext(
+		StateContext
+	);
+
 	// calculate percentage
 	const percentage = Math.round((value / total) * 100);
-
-	// handle tooltip positioning
-	const [toolTipVisibility, setToolTipVisibility] = React.useState(false);
-	const [toolTipPosition, setToolTipPosition] = React.useState({ x: 0, y: 0 });
-
-	const { updateActiveData } = React.useContext(StateContext);
 
 	/**
 	 * Mouse movement event handlers
 	 */
 	const onMouseEnter = () => {
-		setToolTipVisibility(true);
 		updateActiveData({ title, total, value, description, percentage });
 	};
 
 	const onMouseLeave = () => {
-		setToolTipVisibility(false);
 		updateActiveData(null);
 	};
 
 	const onMouseMove = (e: React.MouseEvent) => {
-		setToolTipPosition({ x: e.clientX, y: e.clientY });
+		updateToolTipPosition({ x: e.clientX, y: e.clientY });
 	};
 
 	// TODO: Highlight and show tooltip on touch screens
@@ -117,16 +116,6 @@ const Side: React.FunctionComponent<SideProps> = ({
 				</span>
 				%
 			</span>
-			{toolTipVisibility ? (
-				<ToolTip
-					title={title}
-					value={value}
-					percentage={percentage}
-					total={total}
-					description={description}
-					{...toolTipPosition}
-				/>
-			) : null}
 		</div>
 	);
 };

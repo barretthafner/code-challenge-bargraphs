@@ -2,12 +2,13 @@ import * as React from 'react';
 
 import styles from './App.module.scss';
 
-import { initialState, getActions, StateContext } from './state';
+import { initialState, getContext, StateContext } from './state';
 
 import SingleBar from './components/SingleBar';
 import MultiBar from './components/MultiBar';
 import AsyncMultiBar from './components/AsyncMultiBar';
 import ActiveDataContainer from './components/ActiveData';
+import ToolTipContainer from './components/ToolTip';
 
 /**
  * Test values
@@ -42,12 +43,16 @@ const App = () => {
 	 */
 	const [state, setState] = React.useState(initialState);
 
+	const context = getContext(state, setState);
+
 	/**
 	 * Render component
 	 */
 	return (
-		<StateContext.Provider value={{ ...state, ...getActions(setState) }}>
+		<StateContext.Provider value={context}>
 			<main className={styles.app}>
+				<ToolTipContainer />
+
 				<h1 className={styles.title}>Code Challenge Bargraphs</h1>
 				<a className={styles.author} href="mailto:barretth@gmail.com">
 					By Barrett Hafner
