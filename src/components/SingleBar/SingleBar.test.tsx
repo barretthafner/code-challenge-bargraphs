@@ -2,11 +2,12 @@ import * as React from 'react';
 import 'jest-dom/extend-expect';
 import { render, cleanup, fireEvent } from 'react-testing-library';
 
-import SingleBar, { SingleBarProps } from './index';
+import SingleBar, {
+	SingleBarProps,
+	TEST_ID_LEFT_PERCENTAGE,
+	TEST_ID_RIGHT_PERCENTAGE,
+} from './index';
 import styles from './SingleBar.module.scss';
-
-export const TEST_ID_LEFT_PERCENTAGE = 'leftPercentage';
-export const TEST_ID_RIGHT_PERCENTAGE = 'rightPercentage';
 
 /**
  * Render Component

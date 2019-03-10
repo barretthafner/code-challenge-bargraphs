@@ -3,10 +3,11 @@ import * as React from 'react';
 import styles from './SingleBar.module.scss';
 import { StateContext } from '../../state';
 
-import {
-	TEST_ID_LEFT_PERCENTAGE,
-	TEST_ID_RIGHT_PERCENTAGE,
-} from './SingleBar.test';
+/**
+ * Test ids
+ */
+export const TEST_ID_LEFT_PERCENTAGE = 'leftPercentage';
+export const TEST_ID_RIGHT_PERCENTAGE = 'rightPercentage';
 
 /**
  * BarSideValues
