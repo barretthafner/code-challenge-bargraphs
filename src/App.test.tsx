@@ -8,7 +8,6 @@ import styles from './App.module.scss';
 
 import { TESTID_SIDE } from './components/SingleBar';
 import { TESTID_TOOL_TIP } from './components/ToolTip';
-import { TESTID_ASYNC_MULTIBAR } from './components/AsyncMultiBar';
 
 /**
  * Cleanup
