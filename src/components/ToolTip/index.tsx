@@ -5,7 +5,7 @@ import { StateContext } from '../../state';
 /**
  * Test ids
  */
-export const TESTID_TOOL_TIP = 'toolTip';
+export const ToolTipTestId = 'toolTip';
 
 /**
  * Intermediate component to render ToolTip if activeData exists in StateContext
@@ -45,7 +45,7 @@ export const ToolTip: React.FunctionComponent<IToolTip> = ({
 }) => {
 	return (
 		<aside
-			data-testid={TESTID_TOOL_TIP}
+			data-testid={ToolTipTestId}
 			className={styles.toolTip}
 			style={{
 				left: x,

@@ -12,13 +12,13 @@ import ToolTipContainer from './components/ToolTip';
 /**
  * Test props
  */
-export const singleBarData: ISingleBar = {
+export const SingleBarTestProps: ISingleBar = {
 	title: 'Task Complete',
 	left: { color: '#007cff', value: 48 },
 	right: { color: '#ffe944', value: 240 },
 };
 
-export const multiBarData: IMultiBar = {
+export const MultiBarTestProps: IMultiBar = {
 	values: [
 		{
 			title: 'Data1',
@@ -38,7 +38,7 @@ export const multiBarData: IMultiBar = {
 	],
 };
 
-export const asyncMultiBarData: IAsyncMultiBar = {
+export const AsyncMultiBarTestProps: IAsyncMultiBar = {
 	endpoint:
 		'https://gist.githubusercontent.com/gargrave/e2fd3d07d44862a094dabb36137a9187/raw/29f8aef5813e1f67ab12f90617638091561b6b25/mock-api.json',
 };
@@ -70,17 +70,17 @@ const App = () => {
 
 				<section>
 					<h2 className={styles.header}>SingleBar Component</h2>
-					<SingleBar {...singleBarData} />
+					<SingleBar {...SingleBarTestProps} />
 				</section>
 
 				<section>
 					<h2 className={styles.header}>MulitBar Component</h2>
-					<MultiBar {...multiBarData} />
+					<MultiBar {...MultiBarTestProps} />
 				</section>
 
 				<section>
 					<h2 className={styles.header}>AsyncMultiBar Component</h2>
-					<AsyncMultiBar {...asyncMultiBarData} />
+					<AsyncMultiBar {...AsyncMultiBarTestProps} />
 				</section>
 			</main>
 		</StateContext.Provider>

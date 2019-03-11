@@ -3,21 +3,12 @@ import 'jest-dom/extend-expect';
 import { render, cleanup } from 'react-testing-library';
 
 import SingleBar, {
-	ISingleBar,
-	TESTID_LEFT_PERCENTAGE,
-	TESTID_RIGHT_PERCENTAGE,
+	LeftPercentageTestId,
+	RightPercentageTestId,
 } from './index';
 
 import styles from './SingleBar.module.scss';
-
-/**
- * Render Component
- */
-const testProps: ISingleBar = {
-	title: 'Task Complete',
-	left: { color: '#007cff', value: 48 },
-	right: { color: '#ffe944', value: 240 },
-};
+import { SingleBarTestProps } from '../../App';
 
 /**
  * Cleanup
@@ -28,23 +19,25 @@ afterEach(cleanup);
  * Tests
  */
 test('renders as expected', () => {
-	const { container, getByText } = render(<SingleBar {...testProps} />);
-	expect(getByText(testProps.title)).toBeInTheDocument();
+	const { container, getByText } = render(
+		<SingleBar {...SingleBarTestProps} />
+	);
+	expect(getByText(SingleBarTestProps.title)).toBeInTheDocument();
 
 	expect(container.querySelector(`.${styles.leftSide}`)).toHaveStyle(
-		`background-color: ${testProps.left.color};`
+		`background-color: ${SingleBarTestProps.left.color};`
 	);
 
 	expect(container.querySelector(`.${styles.rightSide}`)).toHaveStyle(
-		`background-color: ${testProps.right.color};`
+		`background-color: ${SingleBarTestProps.right.color};`
 	);
 });
 
 test('math is done properly', () => {
-	const { getByTestId } = render(<SingleBar {...testProps} />);
+	const { getByTestId } = render(<SingleBar {...SingleBarTestProps} />);
 
-	const { value: leftValue } = testProps.left;
-	const { value: rightValue } = testProps.right;
+	const { value: leftValue } = SingleBarTestProps.left;
+	const { value: rightValue } = SingleBarTestProps.right;
 
 	const totalValue = leftValue + rightValue;
 	const leftPercentage = Math.round((leftValue / totalValue) * 100);
@@ -52,10 +45,10 @@ test('math is done properly', () => {
 
 	expect(getByTestId('totalValue')).toHaveTextContent(totalValue.toString());
 
-	expect(getByTestId(TESTID_LEFT_PERCENTAGE)).toHaveTextContent(
+	expect(getByTestId(LeftPercentageTestId)).toHaveTextContent(
 		leftPercentage.toString()
 	);
-	expect(getByTestId(TESTID_RIGHT_PERCENTAGE)).toHaveTextContent(
+	expect(getByTestId(RightPercentageTestId)).toHaveTextContent(
 		rightPercentage.toString()
 	);
 });

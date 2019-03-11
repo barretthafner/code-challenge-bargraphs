@@ -6,9 +6,9 @@ import { StateContext } from '../../state';
 /**
  * Test ids
  */
-export const TESTID_SIDE = 'side';
-export const TESTID_LEFT_PERCENTAGE = 'leftPercentage';
-export const TESTID_RIGHT_PERCENTAGE = 'rightPercentage';
+export const SideTestId = 'side';
+export const LeftPercentageTestId = 'leftPercentage';
+export const RightPercentageTestId = 'rightPercentage';
 
 /**
  * IBarValues
@@ -107,7 +107,7 @@ const Side: React.FunctionComponent<ISide> = ({
 	 */
 	return (
 		<div
-			data-testid={TESTID_SIDE}
+			data-testid={SideTestId}
 			className={isLeft ? styles.leftSide : styles.rightSide}
 			style={{
 				backgroundColor: color,
@@ -118,9 +118,7 @@ const Side: React.FunctionComponent<ISide> = ({
 			onMouseMove={onMouseMove}>
 			<span className={styles.barValue}>
 				<span
-					data-testid={
-						isLeft ? TESTID_LEFT_PERCENTAGE : TESTID_RIGHT_PERCENTAGE
-					}>
+					data-testid={isLeft ? LeftPercentageTestId : RightPercentageTestId}>
 					{percentage}
 				</span>
 				%

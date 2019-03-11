@@ -5,8 +5,8 @@ import { render, cleanup, fireEvent, wait } from 'react-testing-library';
 import App from './App';
 import styles from './App.module.scss';
 
-import { TESTID_SIDE } from './components/SingleBar';
-import { TESTID_TOOL_TIP } from './components/ToolTip';
+import { SideTestId } from './components/SingleBar';
+import { ToolTipTestId } from './components/ToolTip';
 
 /**
  * Cleanup
@@ -23,16 +23,16 @@ test('app renders without crashing', async () => {
 
 test('tooltip shows and hides on barside hover', async () => {
 	const { queryByTestId, getByTestId } = render(<App />);
-	const firstSideComponent = queryByTestId(TESTID_SIDE);
+	const firstSideComponent = queryByTestId(SideTestId);
 
 	// the condition is b/c of TypeScript
 	firstSideComponent && fireEvent.mouseEnter(firstSideComponent);
 	await wait(() => {
-		expect(getByTestId(TESTID_TOOL_TIP)).toBeInTheDocument();
+		expect(getByTestId(ToolTipTestId)).toBeInTheDocument();
 	});
 
 	firstSideComponent && fireEvent.mouseLeave(firstSideComponent);
 	await wait(() => {
-		expect(queryByTestId(TESTID_TOOL_TIP)).not.toBeInTheDocument();
+		expect(queryByTestId(ToolTipTestId)).not.toBeInTheDocument();
 	});
 });
