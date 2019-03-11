@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import SingleBar, { SingleBarProps } from '../SingleBar';
+import { ISingleBar } from '../SingleBar';
 import MultiBar from '../MultiBar';
 
 import styles from './AsyncMultiBar.module.scss';
@@ -9,19 +9,19 @@ const BarColorGreen = '#16B217';
 const BarColorRed = '#C71113';
 
 /**
- * AsyncMultiBarProps
+ * IAsyncMultiBar
  */
-export interface AsyncMultiBarProps {
+export interface IAsyncMultiBar {
 	endpoint: string;
 }
 
 /**
  * AsyncMultiBar Component
  */
-const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
+const AsyncMultiBar: React.FunctionComponent<IAsyncMultiBar> = ({
 	endpoint,
 }) => {
-	const [values, setValues] = React.useState([] as SingleBarProps[]);
+	const [values, setValues] = React.useState([] as ISingleBar[]);
 
 	/**
 	 * fetchValues
@@ -58,10 +58,10 @@ const AsyncMultiBar: React.FunctionComponent<AsyncMultiBarProps> = ({
 /**
  * Helper function to map data from the api
  */
-function mapData(data: any[]): SingleBarProps[] {
+function mapData(data: any[]): ISingleBar[] {
 	return data.reduce(
 		(
-			acc: SingleBarProps[],
+			acc: ISingleBar[],
 			{ name, ...rest }: { name: string; [rest: string]: string }
 		) => {
 			const keys = Object.keys(rest);
@@ -96,13 +96,13 @@ function mapData(data: any[]): SingleBarProps[] {
 				return acc;
 			}, {});
 
-			// add formatted SingleBarProps to return array
+			// add formatted ISingleBar to return array
 			return acc.concat({
 				title: name,
 				...values,
 			});
 		},
-		[] as SingleBarProps[]
+		[] as ISingleBar[]
 	);
 }
 

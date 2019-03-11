@@ -11,27 +11,27 @@ export const TESTID_LEFT_PERCENTAGE = 'leftPercentage';
 export const TESTID_RIGHT_PERCENTAGE = 'rightPercentage';
 
 /**
- * BarSideValues
+ * IBarValues
  */
-interface BarSideValues {
+interface IBarValues {
 	color: string;
 	value: number;
 	description?: string;
 }
 
 /**
- * SingleBarProps
+ * ISingleBar
  */
-export interface SingleBarProps {
-	left: BarSideValues;
-	right: BarSideValues;
+export interface ISingleBar {
+	left: IBarValues;
+	right: IBarValues;
 	title: string;
 }
 
 /**
  * SingleBar Component
  */
-const SingleBar: React.FunctionComponent<SingleBarProps> = ({
+const SingleBar: React.FunctionComponent<ISingleBar> = ({
 	left,
 	right,
 	title,
@@ -56,9 +56,9 @@ const SingleBar: React.FunctionComponent<SingleBarProps> = ({
 };
 
 /**
- * SidePros
+ * ISide
  */
-interface SideProps extends BarSideValues {
+interface ISide extends IBarValues {
 	title: string;
 	total: number;
 	isLeft: boolean;
@@ -67,7 +67,7 @@ interface SideProps extends BarSideValues {
 /**
  * Side Helper Component
  */
-const Side: React.FunctionComponent<SideProps> = ({
+const Side: React.FunctionComponent<ISide> = ({
 	title,
 	total,
 	isLeft,

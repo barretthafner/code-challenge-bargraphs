@@ -2,7 +2,7 @@ import * as React from 'react';
 import 'jest-dom/extend-expect';
 import { render, cleanup } from 'react-testing-library';
 
-import ToolTipContainer, { ToolTip, ToolTipProps } from './index';
+import ToolTipContainer from './index';
 import { StateContext } from '../../state';
 
 const testContext = {

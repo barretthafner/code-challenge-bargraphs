@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-import SingleBar, { SingleBarProps } from '../SingleBar';
+import SingleBar, { ISingleBar } from '../SingleBar';
 
 /**
- * MultiBarProps
+ * IMultiBar
  */
-export interface MultiBarProps {
-	values: SingleBarProps[];
+export interface IMultiBar {
+	values: ISingleBar[];
 }
 
 /**
  * MultiBar Component
  */
-const MultiBar: React.FunctionComponent<MultiBarProps> = ({ values }) => (
+const MultiBar: React.FunctionComponent<IMultiBar> = ({ values }) => (
 	<div>
 		{values.map((value, index: number) => (
 			<SingleBar key={index} {...value} />

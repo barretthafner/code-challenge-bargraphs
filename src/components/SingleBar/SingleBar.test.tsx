@@ -3,16 +3,17 @@ import 'jest-dom/extend-expect';
 import { render, cleanup } from 'react-testing-library';
 
 import SingleBar, {
-	SingleBarProps,
+	ISingleBar,
 	TESTID_LEFT_PERCENTAGE,
 	TESTID_RIGHT_PERCENTAGE,
 } from './index';
+
 import styles from './SingleBar.module.scss';
 
 /**
  * Render Component
  */
-const testProps: SingleBarProps = {
+const testProps: ISingleBar = {
 	title: 'Task Complete',
 	left: { color: '#007cff', value: 48 },
 	right: { color: '#ffe944', value: 240 },

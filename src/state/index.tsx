@@ -3,7 +3,7 @@ import * as React from 'react';
 /**
  * Typescript definitions
  */
-export interface ActiveDataProps {
+export interface IActiveData {
 	title: string;
 	value: number;
 	percentage: number;
@@ -11,27 +11,27 @@ export interface ActiveDataProps {
 	description?: string;
 }
 
-interface Point {
+interface IPoint {
 	x: number;
 	y: number;
 }
 
-interface State {
-	activeData: ActiveDataProps | null;
-	toolTipPosition: Point;
+interface IState {
+	activeData: IActiveData | null;
+	toolTipPosition: IPoint;
 }
 
-interface Actions {
+interface IActions {
 	updateActiveData: Function;
 	updateToolTipPosition: Function;
 }
 
-interface Context extends State, Actions {}
+interface Context extends IState, IActions {}
 
 /**
  * Set initial state
  */
-export const initialState: State = {
+export const initialState: IState = {
 	activeData: null,
 	toolTipPosition: {
 		x: 0,
@@ -40,15 +40,15 @@ export const initialState: State = {
 };
 
 /**
- * Return state actions
+ * Return state Iactions
  */
-export const getContext = (state: State, setState: Function): Context => {
+export const getContext = (state: IState, setState: Function): Context => {
 	return {
 		...state,
-		updateActiveData: (activeData: ActiveDataProps | null) => {
+		updateActiveData: (activeData: IActiveData | null) => {
 			setState({ ...state, activeData });
 		},
-		updateToolTipPosition: (toolTipPosition: Point) => {
+		updateToolTipPosition: (toolTipPosition: IPoint) => {
 			setState({ ...state, toolTipPosition });
 		},
 	};

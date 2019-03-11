@@ -8,7 +8,7 @@ import { StateContext } from '../../state';
 export const TESTID_TOOL_TIP = 'toolTip';
 
 /**
- * Intermediate component to render ToolTip if activeData exists
+ * Intermediate component to render ToolTip if activeData exists in StateContext
  */
 const ToolTipContainer: React.FunctionComponent = () => {
 	const { activeData, toolTipPosition } = React.useContext(StateContext);
@@ -17,9 +17,9 @@ const ToolTipContainer: React.FunctionComponent = () => {
 };
 
 /**
- * ToolTipProps
+ * IToolTip
  */
-export interface ToolTipProps {
+export interface IToolTip {
 	x: number;
 	y: number;
 	title: string;
@@ -32,7 +32,7 @@ export interface ToolTipProps {
 /**
  * ToolTip Component
  */
-export const ToolTip: React.FunctionComponent<ToolTipProps> = ({
+export const ToolTip: React.FunctionComponent<IToolTip> = ({
 	x,
 	y,
 	title,

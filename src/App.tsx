@@ -4,21 +4,21 @@ import styles from './App.module.scss';
 
 import { initialState, getContext, StateContext } from './state';
 
-import SingleBar, { SingleBarProps } from './components/SingleBar';
-import MultiBar, { MultiBarProps } from './components/MultiBar';
-import AsyncMultiBar, { AsyncMultiBarProps } from './components/AsyncMultiBar';
+import SingleBar, { ISingleBar } from './components/SingleBar';
+import MultiBar, { IMultiBar } from './components/MultiBar';
+import AsyncMultiBar, { IAsyncMultiBar } from './components/AsyncMultiBar';
 import ToolTipContainer from './components/ToolTip';
 
 /**
  * Test props
  */
-export const singleBarData: SingleBarProps = {
+export const singleBarData: ISingleBar = {
 	title: 'Task Complete',
 	left: { color: '#007cff', value: 48 },
 	right: { color: '#ffe944', value: 240 },
 };
 
-export const multiBarData: MultiBarProps = {
+export const multiBarData: IMultiBar = {
 	values: [
 		{
 			title: 'Data1',
@@ -38,7 +38,7 @@ export const multiBarData: MultiBarProps = {
 	],
 };
 
-export const asyncMultiBarData: AsyncMultiBarProps = {
+export const asyncMultiBarData: IAsyncMultiBar = {
 	endpoint:
 		'https://gist.githubusercontent.com/gargrave/e2fd3d07d44862a094dabb36137a9187/raw/29f8aef5813e1f67ab12f90617638091561b6b25/mock-api.json',
 };
