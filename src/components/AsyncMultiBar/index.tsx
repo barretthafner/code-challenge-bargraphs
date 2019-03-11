@@ -11,7 +11,7 @@ const BarColorRed = '#C71113';
 /**
  * AsyncMultiBarProps
  */
-interface AsyncMultiBarProps {
+export interface AsyncMultiBarProps {
 	endpoint: string;
 }
 

@@ -5,7 +5,7 @@ import SingleBar, { SingleBarProps } from '../SingleBar';
 /**
  * MultiBarProps
  */
-interface MultiBarProps {
+export interface MultiBarProps {
 	values: SingleBarProps[];
 }
 
