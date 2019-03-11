@@ -3,26 +3,36 @@ import 'jest-dom/extend-expect';
 import { render, cleanup } from 'react-testing-library';
 
 import ToolTipContainer from './index';
-import { StateContext } from '../../state';
+import { StateContext, IContext } from '../../state';
 
 const testContext = {
-	activeData: {
-		title: 'Tooltip Test',
-		value: 2,
-		percentage: 14,
-		total: 205,
-		description: 'test_tooltip',
+	state: {
+		activeData: {
+			title: 'Tooltip Test',
+			value: 2,
+			percentage: 14,
+			total: 205,
+			description: 'test_tooltip',
+		},
+		toolTipPosition: {
+			x: 15,
+			y: 23,
+		},
 	},
-	toolTipPosition: {
-		x: 15,
-		y: 23,
+	actions: {
+		updateActiveData: () => {},
+		updateToolTipPosition: () => {},
 	},
-	updateActiveData: () => {},
-	updateToolTipPosition: () => {},
 };
 
-const { title, value, percentage, total, description } = testContext.activeData;
-const { x, y } = testContext.toolTipPosition;
+const {
+	title,
+	value,
+	percentage,
+	total,
+	description,
+} = testContext.state.activeData;
+const { x, y } = testContext.state.toolTipPosition;
 
 /**
  * Cleanup

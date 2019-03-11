@@ -11,7 +11,9 @@ export const TESTID_TOOL_TIP = 'toolTip';
  * Intermediate component to render ToolTip if activeData exists in StateContext
  */
 const ToolTipContainer: React.FunctionComponent = () => {
-	const { activeData, toolTipPosition } = React.useContext(StateContext);
+	const {
+		state: { activeData, toolTipPosition },
+	} = React.useContext(StateContext);
 
 	return activeData ? <ToolTip {...activeData} {...toolTipPosition} /> : null;
 };

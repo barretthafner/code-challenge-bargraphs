@@ -16,17 +16,20 @@ interface IPoint {
 	y: number;
 }
 
-interface IState {
+export interface IState {
 	activeData: IActiveData | null;
 	toolTipPosition: IPoint;
 }
 
-interface IActions {
+export interface IActions {
 	updateActiveData: Function;
 	updateToolTipPosition: Function;
 }
 
-interface Context extends IState, IActions {}
+export interface IContext {
+	state: IState;
+	actions: IActions;
+}
 
 /**
  * Set initial state
@@ -42,20 +45,22 @@ export const initialState: IState = {
 /**
  * Return state Iactions
  */
-export const getContext = (state: IState, setState: Function): Context => {
+export const getContext = (state: IState, setState: Function): IContext => {
 	return {
-		...state,
-		updateActiveData: (activeData: IActiveData | null) => {
-			setState({ ...state, activeData });
-		},
-		updateToolTipPosition: (toolTipPosition: IPoint) => {
-			setState({ ...state, toolTipPosition });
+		state,
+		actions: {
+			updateActiveData: (activeData: IActiveData | null) => {
+				setState({ ...state, activeData });
+			},
+			updateToolTipPosition: (toolTipPosition: IPoint) => {
+				setState({ ...state, toolTipPosition });
+			},
 		},
 	};
 };
 
 /**
- * Define context
+ * Define Icontext
  */
 export const StateContext = React.createContext({
 	...getContext(initialState, () => {}),

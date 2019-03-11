@@ -78,9 +78,9 @@ const Side: React.FunctionComponent<ISide> = ({
 	/**
 	 * Get state setters
 	 */
-	const { updateActiveData, updateToolTipPosition } = React.useContext(
-		StateContext
-	);
+	const {
+		actions: { updateActiveData, updateToolTipPosition },
+	} = React.useContext(StateContext);
 
 	// calculate percentage
 	const percentage = Math.round((value / total) * 100);
