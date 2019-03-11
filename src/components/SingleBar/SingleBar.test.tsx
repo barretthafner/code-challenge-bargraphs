@@ -1,11 +1,11 @@
 import * as React from 'react';
 import 'jest-dom/extend-expect';
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 
 import SingleBar, {
 	SingleBarProps,
-	TEST_ID_LEFT_PERCENTAGE,
-	TEST_ID_RIGHT_PERCENTAGE,
+	TESTID_LEFT_PERCENTAGE,
+	TESTID_RIGHT_PERCENTAGE,
 } from './index';
 import styles from './SingleBar.module.scss';
 
@@ -51,10 +51,10 @@ test('math is done properly', () => {
 
 	expect(getByTestId('totalValue')).toHaveTextContent(totalValue.toString());
 
-	expect(getByTestId(TEST_ID_LEFT_PERCENTAGE)).toHaveTextContent(
+	expect(getByTestId(TESTID_LEFT_PERCENTAGE)).toHaveTextContent(
 		leftPercentage.toString()
 	);
-	expect(getByTestId(TEST_ID_RIGHT_PERCENTAGE)).toHaveTextContent(
+	expect(getByTestId(TESTID_RIGHT_PERCENTAGE)).toHaveTextContent(
 		rightPercentage.toString()
 	);
 });

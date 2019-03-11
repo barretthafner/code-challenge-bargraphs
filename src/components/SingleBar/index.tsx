@@ -6,8 +6,9 @@ import { StateContext } from '../../state';
 /**
  * Test ids
  */
-export const TEST_ID_LEFT_PERCENTAGE = 'leftPercentage';
-export const TEST_ID_RIGHT_PERCENTAGE = 'rightPercentage';
+export const TESTID_SIDE = 'side';
+export const TESTID_LEFT_PERCENTAGE = 'leftPercentage';
+export const TESTID_RIGHT_PERCENTAGE = 'rightPercentage';
 
 /**
  * BarSideValues
@@ -106,6 +107,7 @@ const Side: React.FunctionComponent<SideProps> = ({
 	 */
 	return (
 		<div
+			data-testid={TESTID_SIDE}
 			className={isLeft ? styles.leftSide : styles.rightSide}
 			style={{
 				backgroundColor: color,
@@ -117,7 +119,7 @@ const Side: React.FunctionComponent<SideProps> = ({
 			<span className={styles.barValue}>
 				<span
 					data-testid={
-						isLeft ? TEST_ID_LEFT_PERCENTAGE : TEST_ID_RIGHT_PERCENTAGE
+						isLeft ? TESTID_LEFT_PERCENTAGE : TESTID_RIGHT_PERCENTAGE
 					}>
 					{percentage}
 				</span>
