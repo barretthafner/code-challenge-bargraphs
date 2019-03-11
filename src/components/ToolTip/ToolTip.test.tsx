@@ -50,13 +50,11 @@ test('renders as expected from context', () => {
 	);
 	const { container, getByText } = render(tree);
 
-	// positioning
 	expect(container.firstChild).toHaveStyle(`
 		left: ${x}px;
 		top: ${y}px;
 	`);
 
-	// text (this is probably overkill ¯\_(ツ)_/¯)
 	expect(getByText(title)).toBeInTheDocument();
 	expect(getByText(`Value: ${value}`)).toBeInTheDocument();
 	expect(getByText(`${percentage}% of ${total}`)).toBeInTheDocument();

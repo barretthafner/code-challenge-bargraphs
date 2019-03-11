@@ -3,7 +3,7 @@ import * as React from 'react';
 /**
  * Typescript definitions
  */
-export interface IActiveData {
+interface IActiveData {
 	title: string;
 	value: number;
 	percentage: number;

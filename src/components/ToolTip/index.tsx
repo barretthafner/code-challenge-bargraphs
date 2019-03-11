@@ -22,26 +22,26 @@ const ToolTipContainer: React.FunctionComponent = () => {
  * IToolTip
  */
 export interface IToolTip {
-	x: number;
-	y: number;
 	title: string;
 	value: number;
 	percentage: number;
 	total: number;
 	description?: string;
+	x: number;
+	y: number;
 }
 
 /**
  * ToolTip Component
  */
 export const ToolTip: React.FunctionComponent<IToolTip> = ({
-	x,
-	y,
 	title,
 	value,
 	percentage,
 	total,
 	description,
+	x,
+	y,
 }) => {
 	return (
 		<aside
