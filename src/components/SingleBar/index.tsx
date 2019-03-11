@@ -6,6 +6,7 @@ import { StateContext } from '../../state';
 /**
  * Test ids
  */
+export const SingleBarTestId = 'singleBar';
 export const SideTestId = 'side';
 export const LeftPercentageTestId = 'leftPercentage';
 export const RightPercentageTestId = 'rightPercentage';
@@ -40,7 +41,7 @@ const SingleBar: React.FunctionComponent<ISingleBar> = ({
 	const total = left.value + right.value;
 
 	return (
-		<figure className={styles.singleBar}>
+		<figure data-testid={SingleBarTestId} className={styles.singleBar}>
 			<div className={styles.infoContainer}>
 				<div>{title}</div>
 				<div>

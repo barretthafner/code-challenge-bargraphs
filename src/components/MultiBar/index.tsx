@@ -13,11 +13,11 @@ export interface IMultiBar {
  * MultiBar Component
  */
 const MultiBar: React.FunctionComponent<IMultiBar> = ({ values }) => (
-	<div>
+	<>
 		{values.map((value, index: number) => (
 			<SingleBar key={index} {...value} />
 		))}
-	</div>
+	</>
 );
 
 export default MultiBar;
