@@ -22,6 +22,7 @@ const AsyncMultiBar: React.FunctionComponent<IAsyncMultiBar> = ({
 	endpoint,
 }) => {
 	const [values, setValues] = React.useState([] as ISingleBar[]);
+	const [ok, setOk] = React.useState(true);
 
 	/**
 	 * fetchValues
@@ -29,6 +30,8 @@ const AsyncMultiBar: React.FunctionComponent<IAsyncMultiBar> = ({
 	 */
 	const fetchValues = async () => {
 		const response = await fetch(endpoint);
+
+		if (response.ok === false) return setOk(false);
 		const data = await response.json();
 		setValues(mapData(data));
 	};
@@ -45,13 +48,14 @@ const AsyncMultiBar: React.FunctionComponent<IAsyncMultiBar> = ({
 	 * Render content
 	 */
 	return (
-		<div>
-			{values.length > 0 ? (
-				<MultiBar values={values} />
-			) : (
-				<div className={styles.loading}>Loading...</div>
-			)}
-		</div>
+		<>
+			{(() => {
+				if (!ok)
+					return <div className={styles.error}>❌ Error Contacting Server</div>;
+				else if (values.length > 0) return <MultiBar values={values} />;
+				else return <div className={styles.loading}>Loading...</div>;
+			})()}
+		</>
 	);
 };
 

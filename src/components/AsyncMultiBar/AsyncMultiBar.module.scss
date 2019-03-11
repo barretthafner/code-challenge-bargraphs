@@ -1,8 +1,17 @@
 .loading {
 	height: 200px;
-	margin-top: 5px;
+	margin-top: 10px;
 
 	text-align: center;
 	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.error {
+	height: 200px;
+	margin-top: 20px;
+
+	text-align: center;
+	font-size: 2em;
 	font-weight: 700;
 }
