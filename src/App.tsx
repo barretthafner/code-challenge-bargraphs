@@ -43,7 +43,6 @@ const App = () => {
 	 * Setup state
 	 */
 	const [state, setState] = React.useState(initialState);
-
 	const context = getContext(state, setState);
 
 	/**

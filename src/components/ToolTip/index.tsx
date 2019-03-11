@@ -3,6 +3,11 @@ import styles from './ToolTip.module.scss';
 import { StateContext } from '../../state';
 
 /**
+ * Test ids
+ */
+export const TESTID_TOOL_TIP = 'toolTip';
+
+/**
  * Intermediate component to render ToolTip if activeData exists
  */
 const ToolTipContainer: React.FunctionComponent = () => {
@@ -27,7 +32,7 @@ export interface ToolTipProps {
 /**
  * ToolTip Component
  */
-const ToolTip: React.FunctionComponent<ToolTipProps> = ({
+export const ToolTip: React.FunctionComponent<ToolTipProps> = ({
 	x,
 	y,
 	title,
@@ -38,6 +43,7 @@ const ToolTip: React.FunctionComponent<ToolTipProps> = ({
 }) => {
 	return (
 		<aside
+			data-testid={TESTID_TOOL_TIP}
 			className={styles.toolTip}
 			style={{
 				left: x,
